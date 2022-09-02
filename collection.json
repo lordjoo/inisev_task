@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "156f9519-11f4-42c2-a223-8197499b4421",
+		"name": "Task Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6069609"
+	},
+	"item": [
+		{
+			"name": "Create post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"{{$randomLoremWord}}\",\r\n    \"description\":\"{{$randomLoremWords}}\",\r\n    \"body\":\"{{$randomLoremText}}\",\r\n    \"website_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APP_URL}}/api/posts",
+					"host": [
+						"{{APP_URL}}"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Websites",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APP_URL}}/api/websites",
+					"host": [
+						"{{APP_URL}}"
+					],
+					"path": [
+						"api",
+						"websites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sub user to website",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Youssef {{$randomAlphaNumeric}}\",\r\n    \"email\":\"{{$randomEmail}}\",\r\n    \"website_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APP_URL}}/api/users/subscribe",
+					"host": [
+						"{{APP_URL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"subscribe"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key:\"Accept\",value:\"application/json\"})"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APP_URL",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
